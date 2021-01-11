@@ -1,0 +1,31 @@
+.body-par {
+    text-align: center;
+}
+.section-image{
+
+}
+
+* {
+    box-sizing: border-box;
+  }
+  
+  .column {
+    float: left;
+    width: 33.33%;
+    padding: 5px;
+  }
+  
+  .row::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+  
+  @media screen and (max-width: 500px) {
+    .column {
+      width: 100%;
+    }
+  }
+  ul,li{
+font-size: 25px;
+  }
