@@ -13,9 +13,10 @@ var centerText = document.getElementById('center_image_text');
 var rightText = document.getElementById('right_image_text');
 
 var allSection = document.getElementById('all_image');
+var viewResult = document.getElementById('view_result')
 
 var trialsleft = 25;
-
+var conter = 0;
 function AllImage(name, image) {
     this.name = name;
     this.image = image;
@@ -47,16 +48,16 @@ function pickAImage() {
 
     do {
         secondImage = Math.round(Math.random() * (imageProdect.length - 1))
-        } while (secondImage === thardImage||secondImage === firstImage);
+    } while (secondImage === thardImage || secondImage === firstImage);
 
     do {
         thardImage = Math.round(Math.random() * (imageProdect.length - 1))
-    } while (thardImage === firstImage||thardImage === secondImage);
+    } while (thardImage === firstImage || thardImage === secondImage);
 
     renderImage(firstImage, secondImage, thardImage);
 }
 
- function checkImage(objectIndicator){
+function checkImage(objectIndicator) {
     for (var index = 0; index < imageProdect.length; index++) {
         if (imageProdect[index].url === objectIndicator) {
             imageProdect[index].conter++;
@@ -74,8 +75,8 @@ function countImage(event) {
             pickAImage();
 
         }
-    } else{
-     allSection.removeEventListener('click',countImage);
+    } else {
+        allSection.removeEventListener('click', countImage);
 
     }
 }
@@ -84,5 +85,17 @@ objectImage();
 pickAImage();
 console.log(imageProdect);
 
+function result(event) {
+    event.preventDefault();
+    var unOrderList = document.createElement('ul');
+    allSection.appendChild(unOrderList);
+    for (let index = 0; index < imageProdect.length; index++) {
+        var list = document.createElement('li');
+        list.textContent = imageProdect[index].name + ' had ' +conter+ ' vots, and was seen 0 times.';
+        unOrderList.appendChild(list);
+    }
+
+}
+
 allSection.addEventListener('click', countImage);
-// viewResult.addEventListener('drag', result);
+viewResult.addEventListener('click', result)
