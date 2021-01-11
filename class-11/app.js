@@ -16,14 +16,14 @@ var allSection = document.getElementById('all_image');
 var viewResult = document.getElementById('view_result')
 
 var trialsleft = 25;
-var conter = 0;
+// var counter = 0;
 function AllImage(name, image) {
     this.name = name;
     this.image = image;
     this.url = 'image/' + image;
-    this.conter = 0;
+    this.counter = 0;
     imageProdect.push(this);
-
+    this.timesShown = 0;
 }
 function objectImage() {
     for (let index = 0; index < 19; index++) {
@@ -39,6 +39,9 @@ function renderImage(firstImage, secondImage, thardImage) {
     centerText.textContent = imageProdect[secondImage].name;
     rightText.textContent = imageProdect[thardImage].name;
 
+    imageProdect[firstImage].timesShown++;
+    imageProdect[secondImage].timesShown++;
+    imageProdect[thardImage].timesShown++;
 }
 
 function pickAImage() {
@@ -60,7 +63,7 @@ function pickAImage() {
 function checkImage(objectIndicator) {
     for (var index = 0; index < imageProdect.length; index++) {
         if (imageProdect[index].url === objectIndicator) {
-            imageProdect[index].conter++;
+            imageProdect[index].counter++;
             trialsleft--;
         }
     }
@@ -91,11 +94,11 @@ function result(event) {
     allSection.appendChild(unOrderList);
     for (let index = 0; index < imageProdect.length; index++) {
         var list = document.createElement('li');
-        list.textContent = imageProdect[index].name + ' had ' +conter+ ' vots, and was seen 0 times.';
+        list.textContent = imageProdect[index].name + ' had ' + imageProdect[index].counter + ' vots, and was seen ' + imageProdect[index].timesShown + ' times.';
         unOrderList.appendChild(list);
     }
 
 }
 
 allSection.addEventListener('click', countImage);
-viewResult.addEventListener('click', result)
+viewResult.addEventListener('click', result);
