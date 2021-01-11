@@ -16,7 +16,7 @@ var allSection = document.getElementById('all_image');
 var viewResult = document.getElementById('view_result')
 
 var trialsleft = 25;
-var conter = 0;
+// var conter = 0;
 function AllImage(name, image) {
     this.name = name;
     this.image = image;
@@ -91,11 +91,11 @@ function result(event) {
     allSection.appendChild(unOrderList);
     for (let index = 0; index < imageProdect.length; index++) {
         var list = document.createElement('li');
-        list.textContent = imageProdect[index].name + ' had ' +conter+ ' vots, and was seen 0 times.';
+        list.textContent = imageProdect[index].name + ' had ' + AllImage.conter + ' vots, and was seen 0 times.';
         unOrderList.appendChild(list);
     }
 
 }
 
 allSection.addEventListener('click', countImage);
-viewResult.addEventListener('click', result)
+viewResult.addEventListener('click', result);
