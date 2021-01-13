@@ -1,0 +1,58 @@
+.body-par {
+    text-align: center;
+}
+.section-image{
+
+}
+
+* {
+    box-sizing: border-box;
+    background-color: rgb(170, 165, 165);
+  }
+  
+  .column {
+    float: left;
+    width: 33.33%;
+    padding: 5px;
+  }
+  
+  .row::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+  
+  @media screen and (max-width: 500px) {
+    .column {
+      width: 100%;
+    }
+  }
+  ul,li{
+font-size: 25px;
+  }
+  .image{
+    width:400px;
+    height:400px;
+    border-radius: 50%;
+    border:20px solid #ff0000;
+    float:left;
+    transition: 2s;
+
+    }
+
+    .image img {
+      border-radius: 50%;
+      cursor:pointer;
+      transition: all 5s ease-in;
+      -webkit-transition: all 5s ease-in;
+    }
+    
+    .image:hover img {
+  transition-property: border-radius, background-color;
+  transition-duration: 2s, 2s;
+  transition-timing-function: linear, linear;
+
+  border-radius: 50%;
+  background-color: #f03c1d;
+   
+ }
